@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import ImagenB64 from './components/ImagenB64'
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [imagen, setImagen] = useState("");
+    return (
+            <div className='App'>
+             <input name="imagen" type="file" multiple onChange = {(e)=>ImagenB64(e.target.files,setImagen)}/><br/><br/>
+             <img src={`data:image/jpeg;base64,${imagen}`}/>
+              <a href="https://base64.guru/converter/decode/file" class="active">Comprueba aqui</a>
+           </div>
   );
 }
 
+
 export default App;
+
